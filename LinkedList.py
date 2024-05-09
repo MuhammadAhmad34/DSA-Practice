@@ -110,6 +110,25 @@ class LinkedList:
             self.head = self.head.next
         print(f"Value at given Index: {self.head.data}")
 
+    def FindMax(self)->int:
+        if self.head is None:
+            raise ValueError("List is Empty")
+        MAX = self.head.data
+        while self.head != None:
+            if self.head.data > MAX:
+                MAX = self.head.data
+            self.head = self.head.next
+        return MAX
+    
+    def SumNode(self)->int:
+        length = self.count
+        SUM = 0
+        for i in range(length):
+            if i % 2 == 1:
+                SUM += self.head.data
+            self.head = self.head.next
+        return SUM
+    
     def PrintList(self):
         curr = self.head
         while curr != None:
@@ -121,8 +140,8 @@ class LinkedList:
 if __name__ == "__main__":
     LIST = LinkedList()
     LIST.insertHead(50)
-    LIST.insertHead(40)
+    LIST.insertHead(400)
     LIST.insertHead(30)
-    LIST.insertHead(20)
+    LIST.insertHead(200)
     LIST.insertHead(10)
-    LIST.SearchIndex(5)
+    print(LIST.SumNode())
