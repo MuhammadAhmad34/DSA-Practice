@@ -120,6 +120,14 @@ class LinkedList:
             self.head = self.head.next
         return MAX
     
+    def FindMiddle(self):
+        curr = self.head
+        fast = curr.next.next
+        while fast.next is not None:
+            fast = fast.next
+            curr = curr.next
+        return curr.data
+
     def SumNode(self)->int:
         length = self.count
         SUM = 0
@@ -141,7 +149,8 @@ if __name__ == "__main__":
     LIST = LinkedList()
     LIST.insertHead(50)
     LIST.insertHead(400)
-    LIST.insertHead(30)
+    LIST.insertHead(3000)
     LIST.insertHead(200)
     LIST.insertHead(10)
-    print(LIST.SumNode())
+    LIST.PrintList()
+    print(LIST.FindMiddle())
