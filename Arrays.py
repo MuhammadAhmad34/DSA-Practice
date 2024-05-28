@@ -15,6 +15,15 @@ def FindLargest(arr:list[int])->int:
     return largest
 
 def SecondLargest(arr:list[int])->int:
+    """
+    This function finds and returns the index of the second largest element in a given list.
+    
+    :param arr: The function `SecondLargest` takes a list of integers `arr` as input and returns the
+    index of the second largest element in the list
+    :type arr: list[int]
+    :return: The function `SecondLargest` is returning the index of the second largest element in the
+    input list `arr`.
+    """
     largest = FindLargest(arr)
     resul = -1
     for i in range(len(arr)):
@@ -82,4 +91,64 @@ def TwoSum(arr:list[int], target:int)->list[int]:
             right -=1
     return [0,0]
 
-print(TwoSum.__doc__)
+def PeakElement(arr):
+    if len(arr) == 1:
+        return 0
+    if arr[0] > arr[1]:
+        return 1
+    if arr[len(arr)-1] > arr[len(arr)-2]:
+        return len(arr) - 1
+    low = 1
+    high = len(arr) - 2
+    while low <= high:
+        mid = (low+high) // 2
+        if (arr[mid-1]<arr[mid]) and (arr[mid]>arr[mid+1]):
+            return mid
+        elif arr[mid]>arr[mid-1]:
+            low = mid+1
+        else:
+            high = mid - 1
+    return -1
+ 
+def MajorityElement(arr:list[int]):
+    freq = {}
+    Len = len(arr) // 2
+    for i in arr:
+        if i in freq:
+            freq[i] += 1
+        else:
+            freq[i] = 1
+
+    for key, val in freq.items():
+        if val > Len:
+            print(key)
+
+def ShiftZeros(arr:list[int])->list[int]:
+    # temp = []
+    # NoZeros = len(arr)
+    # for i in range(len(arr)):
+    #     if arr[i] != 0:
+    #         temp.append(arr[i])
+    # for i in range(len(temp)):
+    #     arr[i] = temp[i]
+    # for i in range(len(temp), len(arr)):
+    #     arr[i] = 0
+
+    if len(arr) == 0:
+        raise ValueError("Given List is empty")
+
+    j = -1
+    for i in range(len(arr)):
+        if arr[i] == 0:
+            j = i
+            break
+    if j == -1: return arr
+    for i in range(j+1, len(arr)):
+        if arr[i] != 0:
+            arr[i], arr[j] = arr[j], arr[i]
+            j += 1
+    return arr
+    
+    print(arr)
+
+print(ShiftZeros([]))
