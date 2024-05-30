@@ -149,6 +149,43 @@ def ShiftZeros(arr:list[int])->list[int]:
             j += 1
     return arr
     
-    print(arr)
+def UnionOfArray(arr1:list[int], arr2:list[int])->list[int]:
+    """
+    Finds the union of two integer lists efficiently.
 
-print(ShiftZeros([]))
+    @params:
+        arr1: The first list of integers.
+        arr2: The second list of integers.
+
+    @return:
+        A list containing the unique elements from both input lists.
+  """
+    # st = set()
+    # union = []
+
+    # if len(arr1) == 0 or len(arr2) == 0:
+    #     raise ValueError("Empty List")
+    
+    # for i in range(len(arr1)):
+    #     st.add(arr1[i])
+
+    # for j in range(len(arr2)):
+    #     st.add(arr2[j])
+    
+    # for i in st:
+    #     union.append(i)
+    
+    # return union
+    union = []
+    i = 0
+    prev = None
+    combine = sorted(arr1+arr2)
+    while i < len(combine):
+        curr = combine[i]
+        if curr != prev:
+            union.append(curr)
+            prev = curr
+        i += 1
+    return union
+
+print(UnionOfArray.__doc__)
