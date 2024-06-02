@@ -188,4 +188,56 @@ def UnionOfArray(arr1:list[int], arr2:list[int])->list[int]:
         i += 1
     return union
 
-print(UnionOfArray.__doc__)
+def MissingValues(arr:list[int])->int:
+    """
+    The function MissingValues calculates the missing value in an array of integers using XOR
+    operations.
+    
+    :param arr: The function `MissingValues` takes a list of integers as input. The function calculates
+    the missing value in the list by performing XOR operations on the elements of the list and the
+    indices of the elements
+    :type arr: list[int]
+    :return: int
+    """
+    XOR1 = 0
+    XOR2 = 0
+    n = len(arr) - 1
+    for i in range(len(arr)):
+        XOR2 = XOR2 ^ arr[i]
+        XOR1 = XOR1 ^ (i+1)
+    return (XOR1 ^ XOR2)          
+
+
+def MaxConsecutiveOnes(arr:list[int])->int:
+    """
+    The function `MaxConsecutiveOnes` takes a list of integers and returns the maximum number of
+    consecutive ones in the list.
+    
+    :param arr: The function `MaxConsecutiveOnes` takes a list of integers as input and returns the
+    maximum number of consecutive ones in the list.
+    :type arr: list[int]
+    :return: int -> NUMBERS OF MAXIMUM CONSECUTIVE ONES.
+    """
+    count = 0
+    MaxOnes = 0
+    for i in range(len(arr)):
+        if arr[i] == 1:
+            count += 1
+            MaxOnes = max(MaxOnes, count)
+        else:
+            count = 0
+    return MaxOnes
+
+def FindSingleNumber(arr:list[int])->int:
+    freq = {}
+    for i in range(len(arr)):
+        if arr[i] in freq:
+            freq[arr[i]] += 1
+        else:
+            freq[arr[i]] = 1
+    
+    for key, val in freq.items():
+        if val == 1:
+            return key
+
+print(FindSingleNumber([1,2,2,1,1,3,4,4]))
