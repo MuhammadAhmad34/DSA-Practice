@@ -239,5 +239,3 @@ def FindSingleNumber(arr:list[int])->int:
     for key, val in freq.items():
         if val == 1:
             return key
-
-print(FindSingleNumber([1,2,2,1,1,3,4,4]))
