@@ -1,7 +1,7 @@
-def FindLargest(arr:list[int])->int:
+def FindLargest(arr: list[int]) -> int:
     """
     This Python function finds the index of the largest element in a given list.
-    
+
     :param arr: The function `FindLargest` takes a list of integers `arr` as input and returns the index
     of the largest element in the list
     :type arr: list[int]
@@ -14,10 +14,11 @@ def FindLargest(arr:list[int])->int:
             largest = i
     return largest
 
-def SecondLargest(arr:list[int])->int:
+
+def SecondLargest(arr: list[int]) -> int:
     """
     This function finds and returns the index of the second largest element in a given list.
-    
+
     :param arr: The function `SecondLargest` takes a list of integers `arr` as input and returns the
     index of the second largest element in the list
     :type arr: list[int]
@@ -34,18 +35,20 @@ def SecondLargest(arr:list[int])->int:
                 resul = i
     return resul
 
-def RemoveDuplicate(arr:list[int]):
+
+def RemoveDuplicate(arr: list[int]):
     i = 0
     for j in range(len(arr)):
         if arr[i] != arr[j]:
-            i +=1
+            i += 1
             arr[i] = arr[j]
-            
+
     arr = arr[:i+1]
     return arr
 
-def Rotate(arr:list[int], k:int)->list:
-    def reverse(arr:list[int], left:int, right:int):
+
+def Rotate(arr: list[int], k: int) -> list:
+    def reverse(arr: list[int], left: int, right: int):
         while left < right:
             arr[left], arr[right] = arr[right], arr[left]
             left += 1
@@ -56,7 +59,8 @@ def Rotate(arr:list[int], k:int)->list:
     reverse(arr, k, len(arr)-1)
     return arr
 
-def BinarySearch(arr:list[int],target:int):
+
+def BinarySearch(arr: list[int], target: int):
     low = 0
     hight = len(arr) - 1
     while low <= hight:
@@ -70,12 +74,12 @@ def BinarySearch(arr:list[int],target:int):
     return - 1
 
 
-def TwoSum(arr:list[int], target:int)->list[int]:
+def TwoSum(arr: list[int], target: int) -> list[int]:
     '''
     two Sum problem. The function `TwoSum` takes a
     list of integers `arr` and a target integer `target` as input. It then initializes two pointers,
     'left' pointing to the start of the list and `right` pointing to the end of the list.
-    
+
     @params: list[int], target:int
     @return: list[int]
     '''
@@ -86,10 +90,11 @@ def TwoSum(arr:list[int], target:int)->list[int]:
         if Sum == target:
             return [left, right]
         elif Sum <= target:
-            left +=1
+            left += 1
         else:
-            right -=1
-    return [0,0]
+            right -= 1
+    return [0, 0]
+
 
 def PeakElement(arr):
     if len(arr) == 1:
@@ -102,15 +107,16 @@ def PeakElement(arr):
     high = len(arr) - 2
     while low <= high:
         mid = (low+high) // 2
-        if (arr[mid-1]<arr[mid]) and (arr[mid]>arr[mid+1]):
+        if (arr[mid-1] < arr[mid]) and (arr[mid] > arr[mid+1]):
             return mid
-        elif arr[mid]>arr[mid-1]:
+        elif arr[mid] > arr[mid-1]:
             low = mid+1
         else:
             high = mid - 1
     return -1
- 
-def MajorityElement(arr:list[int]):
+
+
+def MajorityElement(arr: list[int]):
     freq = {}
     Len = len(arr) // 2
     for i in arr:
@@ -123,7 +129,8 @@ def MajorityElement(arr:list[int]):
         if val > Len:
             print(key)
 
-def ShiftZeros(arr:list[int])->list[int]:
+
+def ShiftZeros(arr: list[int]) -> list[int]:
     # temp = []
     # NoZeros = len(arr)
     # for i in range(len(arr)):
@@ -142,14 +149,16 @@ def ShiftZeros(arr:list[int])->list[int]:
         if arr[i] == 0:
             j = i
             break
-    if j == -1: return arr
+    if j == -1:
+        return arr
     for i in range(j+1, len(arr)):
         if arr[i] != 0:
             arr[i], arr[j] = arr[j], arr[i]
             j += 1
     return arr
-    
-def UnionOfArray(arr1:list[int], arr2:list[int])->list[int]:
+
+
+def UnionOfArray(arr1: list[int], arr2: list[int]) -> list[int]:
     """
     Finds the union of two integer lists efficiently.
 
@@ -165,16 +174,16 @@ def UnionOfArray(arr1:list[int], arr2:list[int])->list[int]:
 
     # if len(arr1) == 0 or len(arr2) == 0:
     #     raise ValueError("Empty List")
-    
+
     # for i in range(len(arr1)):
     #     st.add(arr1[i])
 
     # for j in range(len(arr2)):
     #     st.add(arr2[j])
-    
+
     # for i in st:
     #     union.append(i)
-    
+
     # return union
     union = []
     i = 0
@@ -188,11 +197,12 @@ def UnionOfArray(arr1:list[int], arr2:list[int])->list[int]:
         i += 1
     return union
 
-def MissingValues(arr:list[int])->int:
+
+def MissingValues(arr: list[int]) -> int:
     """
     The function MissingValues calculates the missing value in an array of integers using XOR
     operations.
-    
+
     :param arr: The function `MissingValues` takes a list of integers as input. The function calculates
     the missing value in the list by performing XOR operations on the elements of the list and the
     indices of the elements
@@ -205,14 +215,14 @@ def MissingValues(arr:list[int])->int:
     for i in range(len(arr)):
         XOR2 = XOR2 ^ arr[i]
         XOR1 = XOR1 ^ (i+1)
-    return (XOR1 ^ XOR2)          
+    return (XOR1 ^ XOR2)
 
 
-def MaxConsecutiveOnes(arr:list[int])->int:
+def MaxConsecutiveOnes(arr: list[int]) -> int:
     """
     The function `MaxConsecutiveOnes` takes a list of integers and returns the maximum number of
     consecutive ones in the list.
-    
+
     :param arr: The function `MaxConsecutiveOnes` takes a list of integers as input and returns the
     maximum number of consecutive ones in the list.
     :type arr: list[int]
@@ -228,16 +238,30 @@ def MaxConsecutiveOnes(arr:list[int])->int:
             count = 0
     return MaxOnes
 
-def FindSingleNumber(arr:list[int])->int:
+
+def FindSingleNumber(arr: list[int]) -> int:
     freq = {}
     for i in range(len(arr)):
         if arr[i] in freq:
             freq[arr[i]] += 1
         else:
             freq[arr[i]] = 1
-    
+
     for key, val in freq.items():
         if val == 1:
             return key
 
-print(FindSingleNumber([1,2,2,1,1,3,4,4]))
+
+def TwoSum(arr: list[int], target: int):
+    # for i in range(len(arr)):
+    #     for j in range(i+1, len(arr)):
+    #         if arr[i] + arr[j] == k:
+    #             print([i,j])
+    Hash = {}
+    for i in range(len(arr)):
+        diff = target - arr[i]
+        if diff in Hash:
+            return [i, Hash[diff]]
+        Hash[arr[i]] = i
+
+print(TwoSum([2, 6, 5, 8,11], 14))
