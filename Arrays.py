@@ -257,11 +257,82 @@ def TwoSum(arr: list[int], target: int):
     #     for j in range(i+1, len(arr)):
     #         if arr[i] + arr[j] == k:
     #             print([i,j])
-    Hash = {}
-    for i in range(len(arr)):
-        diff = target - arr[i]
-        if diff in Hash:
-            return [i, Hash[diff]]
-        Hash[arr[i]] = i
+    # Hash = {}
+    # for i in range(len(arr)):
+    #     diff = target - arr[i]
+    #     if diff in Hash:
+    #         return [i, Hash[diff]]
+    #     Hash[arr[i]] = i
+    arr.sort()
+    left = 0
+    right = len(arr)-1
+    while left < right:
+        if arr[left] + arr[right] == target:
+            return [left, right]
+        if arr[left] + arr[right] > target:
+            right -=1
+        else:
+            left +=1
 
-print(TwoSum([2, 6, 5, 8,11], 14))
+
+def SORT(arr:list[int]):
+    # zero = 0
+    # one = 0
+    # two = 0
+    # for i in range(len(arr)):
+    #     if arr[i] == 0:
+    #         zero += 1
+    #     elif arr[i] == 1:
+    #         one += 1
+    #     else:
+    #         two += 1
+    # for j in range(zero):
+    #     arr[j] = 0
+    # for k in range(zero, zero+one):
+    #     arr[k] = 1
+    # for l in range(zero+one, len(arr)):
+    #     arr[l] = 2 
+
+    low = 0
+    mid = 0
+    high = len(arr) - 1
+    while mid <= high:
+        if arr[mid] == 0:
+            arr[mid], arr[low] = arr[low], arr[mid]
+            mid += 1
+            low += 1
+        elif arr[mid] == 1:
+            mid += 1
+        else:
+            arr[mid], arr[high] = arr[high], arr[mid]
+            high -= 1
+
+def MajorityElement(arr:list[int])->int:
+    # Hash = {}
+    # for i in range(len(arr)):
+    #     if arr[i] in Hash:
+    #         Hash[arr[i]] += 1
+    #     else:
+    #         Hash[arr[i]] = 1
+    # for key, val in Hash.items():
+    #     if val > (len(arr)//2):
+    #         return key 
+    count = 0
+    count1 = 0
+    for i in range(len(arr)):
+        if count == 0:
+            element = arr[i]
+            count = 1
+        elif arr[i] == element:
+            count +=1
+        else:
+            count -= 1
+    for i in range(len(arr)):
+        if arr[i] == element:
+            count1 += 1
+    
+    if count1 > (len(arr)//2):
+        return element
+    return -1
+
+print(MajorityElement([7,7,5,7,5,1,5,7,5,5,7,7,5,5,5,5]))
