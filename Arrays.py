@@ -349,6 +349,17 @@ def MaxSubArraySum(arr: list[int]) -> int:
 
 
 def BuySellStock(arr: list[int]) -> int:
+    """
+    The function `BuySellStock` calculates the maximum profit that can be obtained by buying and selling
+    a stock at different prices in a given list.
+    
+    :param arr: The function `BuySellStock` takes a list of integers `arr` as input, where each element
+    represents the price of a stock on a given day. The function calculates the maximum profit that can
+    be obtained by buying and selling the stock at the right time within the given list of prices
+    :type arr: list[int]
+    :return: The function `BuySellStock` returns the maximum profit that can be obtained by buying and
+    selling a stock represented by the input list `arr`.
+    """
     mini = arr[0]
     profit = 0
     for i in range(len(arr)):
