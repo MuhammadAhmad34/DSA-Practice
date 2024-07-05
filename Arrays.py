@@ -270,12 +270,12 @@ def TwoSum(arr: list[int], target: int):
         if arr[left] + arr[right] == target:
             return [left, right]
         if arr[left] + arr[right] > target:
-            right -=1
+            right -= 1
         else:
-            left +=1
+            left += 1
 
 
-def SORT(arr:list[int]):
+def SORT(arr: list[int]):
     # zero = 0
     # one = 0
     # two = 0
@@ -291,7 +291,7 @@ def SORT(arr:list[int]):
     # for k in range(zero, zero+one):
     #     arr[k] = 1
     # for l in range(zero+one, len(arr)):
-    #     arr[l] = 2 
+    #     arr[l] = 2
 
     low = 0
     mid = 0
@@ -307,7 +307,8 @@ def SORT(arr:list[int]):
             arr[mid], arr[high] = arr[high], arr[mid]
             high -= 1
 
-def MajorityElement(arr:list[int])->int:
+
+def MajorityElement(arr: list[int]) -> int:
     # Hash = {}
     # for i in range(len(arr)):
     #     if arr[i] in Hash:
@@ -316,7 +317,7 @@ def MajorityElement(arr:list[int])->int:
     #         Hash[arr[i]] = 1
     # for key, val in Hash.items():
     #     if val > (len(arr)//2):
-    #         return key 
+    #         return key
     count = 0
     count1 = 0
     for i in range(len(arr)):
@@ -324,15 +325,37 @@ def MajorityElement(arr:list[int])->int:
             element = arr[i]
             count = 1
         elif arr[i] == element:
-            count +=1
+            count += 1
         else:
             count -= 1
     for i in range(len(arr)):
         if arr[i] == element:
             count1 += 1
-    
+
     if count1 > (len(arr)//2):
         return element
     return -1
 
-print(MajorityElement([7,7,5,7,5,1,5,7,5,5,7,7,5,5,5,5]))
+
+def MaxSubArraySum(arr: list[int]) -> int:
+    Sum = 0
+    Max = arr[0]
+    for i in range(len(arr)):
+        Sum += arr[i]
+        Max = max(Sum, Max)
+        if Sum < 0:
+            Sum = 0
+    return Max
+
+
+def BuySellStock(arr: list[int]) -> int:
+    mini = arr[0]
+    profit = 0
+    for i in range(len(arr)):
+        cost = arr[i] - mini
+        profit = max(profit, cost)
+        mini = min(mini, arr[i])
+    return profit
+
+
+print(BuySellStock([7, 1, 5, 3, 8, 4]))
