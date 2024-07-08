@@ -368,5 +368,18 @@ def BuySellStock(arr: list[int]) -> int:
         mini = min(mini, arr[i])
     return profit
 
+def ArrangeBySign(arr:list[int])->list[int]:
+    pos = []
+    neg = []
+    for i in range(len(arr)):
+        if arr[i] > 0:
+            pos.append(arr[i])
+        else:
+            neg.append(arr[i])
+    for i in range(len(arr)//2):
+        arr[2*i] = pos[i]
+        arr[2*i+1] = neg[i]
+    
+    return arr
 
-print(BuySellStock([7, 1, 5, 3, 8, 4]))
+print(ArrangeBySign([3,1,-2,-5,2,-4]))
